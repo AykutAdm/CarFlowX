@@ -16,4 +16,16 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="8.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Features\Mediator\Commands\SocialMediaCommands\" />
+    <Folder Include="Features\Mediator\Commands\ServiceCommands\" />
+    <Folder Include="Features\Mediator\Handlers\SocialMediaHandlers\" />
+    <Folder Include="Features\Mediator\Handlers\ServiceHandlers\" />
+    <Folder Include="Features\Mediator\Handlers\PricingHandlers\" />
+    <Folder Include="Features\Mediator\Queries\SocialMediaQueries\" />
+    <Folder Include="Features\Mediator\Queries\ServiceQueries\" />
+    <Folder Include="Features\Mediator\Results\SocialMediaResults\" />
+    <Folder Include="Features\Mediator\Results\ServiceResults\" />
+  </ItemGroup>
+
 </Project>
