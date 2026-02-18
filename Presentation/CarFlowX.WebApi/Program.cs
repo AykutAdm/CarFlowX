@@ -4,6 +4,7 @@ using CarFlowX.Application.Features.CQRS.Handlers.BrandHandlers;
 using CarFlowX.Application.Features.CQRS.Handlers.CarHandlers;
 using CarFlowX.Application.Features.CQRS.Handlers.CategoryHandlers;
 using CarFlowX.Application.Features.CQRS.Handlers.ContactHandlers;
+using CarFlowX.Application.Features.Mediator.Handlers.TestimonialHandlers;
 using CarFlowX.Application.Interfaces;
 using CarFlowX.Application.Interfaces.CarInterfaces;
 using CarFlowX.Application.Services;
@@ -57,6 +58,11 @@ builder.Services.AddScoped<CreateContactCommandHandler>();
 builder.Services.AddScoped<UpdateContactCommandHandler>();
 builder.Services.AddScoped<RemoveContactCommandHandler>();
 
+builder.Services.AddScoped<GetTestimonialQueryHandler>();
+builder.Services.AddScoped<GetTestimonialByIdQueryHandler>();
+builder.Services.AddScoped<CreateTestimonialCommandHandler>();
+builder.Services.AddScoped<UpdateTestimonialCommandHandler>();
+builder.Services.AddScoped<RemoveTestimonialCommandHandler>();
 
 builder.Services.AddApplicationService(builder.Configuration);
 
