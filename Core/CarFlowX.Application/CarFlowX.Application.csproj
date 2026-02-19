@@ -17,13 +17,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Features\Mediator\Commands\AuthorCommands\" />
+    <Folder Include="Features\Mediator\Commands\BlogCommands\" />
     <Folder Include="Features\Mediator\Commands\TestimonialCommands\" />
     <Folder Include="Features\Mediator\Commands\SocialMediaCommands\" />
     <Folder Include="Features\Mediator\Commands\ServiceCommands\" />
+    <Folder Include="Features\Mediator\Handlers\AuthorHandlers\" />
     <Folder Include="Features\Mediator\Handlers\TestimonialHandlers\" />
     <Folder Include="Features\Mediator\Handlers\SocialMediaHandlers\" />
     <Folder Include="Features\Mediator\Handlers\ServiceHandlers\" />
     <Folder Include="Features\Mediator\Handlers\PricingHandlers\" />
+    <Folder Include="Features\Mediator\Queries\AuthorQueries\" />
     <Folder Include="Features\Mediator\Queries\TestimonialQueries\" />
     <Folder Include="Features\Mediator\Queries\SocialMediaQueries\" />
     <Folder Include="Features\Mediator\Queries\ServiceQueries\" />

@@ -4,12 +4,17 @@ using CarFlowX.Application.Features.CQRS.Handlers.BrandHandlers;
 using CarFlowX.Application.Features.CQRS.Handlers.CarHandlers;
 using CarFlowX.Application.Features.CQRS.Handlers.CategoryHandlers;
 using CarFlowX.Application.Features.CQRS.Handlers.ContactHandlers;
+using CarFlowX.Application.Features.Mediator.Handlers.AuthorHandlers;
 using CarFlowX.Application.Features.Mediator.Handlers.TestimonialHandlers;
 using CarFlowX.Application.Interfaces;
+using CarFlowX.Application.Interfaces.BlogInterfaces;
 using CarFlowX.Application.Interfaces.CarInterfaces;
+using CarFlowX.Application.Interfaces.CarPricingInterfaces;
 using CarFlowX.Application.Services;
 using CarFlowX.Persistence.Context;
 using CarFlowX.Persistence.Repositories;
+using CarFlowX.Persistence.Repositories.BlogRepositories;
+using CarFlowX.Persistence.Repositories.CarPricingRepositories;
 using CarFlowX.Persistence.Repositories.CarRepositories;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,6 +24,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddScoped<CarFlowXContext>();
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped(typeof(ICarRepository), typeof(CarRepository));
+builder.Services.AddScoped(typeof(IBlogRepository), typeof(BlogRepository));
+builder.Services.AddScoped(typeof(ICarPricingRepository), typeof(CarPricingRepository));
 
 builder.Services.AddScoped<GetAboutQueryHandler>();
 builder.Services.AddScoped<GetAboutByIdQueryHandler>();
@@ -45,6 +52,7 @@ builder.Services.AddScoped<CreateCarCommandHandler>();
 builder.Services.AddScoped<UpdateCarCommandHandler>();
 builder.Services.AddScoped<RemoveCarCommandHandler>();
 builder.Services.AddScoped<GetCarWithBrandQueryHandler>();
+builder.Services.AddScoped<GetLast5CarsWithBrandQueryHandler>();
 
 builder.Services.AddScoped<GetCategoryQueryHandler>();
 builder.Services.AddScoped<GetCategoryByIdQueryHandler>();
@@ -63,6 +71,7 @@ builder.Services.AddScoped<GetTestimonialByIdQueryHandler>();
 builder.Services.AddScoped<CreateTestimonialCommandHandler>();
 builder.Services.AddScoped<UpdateTestimonialCommandHandler>();
 builder.Services.AddScoped<RemoveTestimonialCommandHandler>();
+
 
 builder.Services.AddApplicationService(builder.Configuration);
 
