@@ -19,5 +19,8 @@ namespace CarFlowX.Domain.Entities
 
         public int CategoryId { get; set; }
         public Category Category { get; set; }
+
+        public List<TagCloud> TagClouds { get; set; }
+        public List<Comment> Comments { get; set; }
     }
 }

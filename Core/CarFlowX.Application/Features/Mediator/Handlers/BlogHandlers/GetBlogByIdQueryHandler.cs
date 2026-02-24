@@ -30,6 +30,7 @@ namespace CarFlowX.Application.Features.Mediator.Handlers.BlogHandlers
                 CoverImageUrl = values.CoverImageUrl,
                 CreatedDate = values.CreatedDate,
                 AuthorId = values.AuthorId,
+                Description = values.Description,
                 CategoryId = values.CategoryId
             };
         }

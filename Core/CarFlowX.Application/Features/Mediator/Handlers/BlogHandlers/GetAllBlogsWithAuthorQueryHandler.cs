@@ -31,6 +31,8 @@ namespace CarFlowX.Application.Features.Mediator.Handlers.BlogHandlers
                 CreatedDate = x.CreatedDate,
                 Title = x.Title,
                 AuthorName = x.Author.Name,
+                AuthorDescription = x.Author.Description,
+                AuthorImageUrl = x.Author.ImageUrl,
                 Description = x.Description
             }).ToList();
         }
