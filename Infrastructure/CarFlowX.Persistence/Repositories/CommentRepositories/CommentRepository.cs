@@ -1,6 +1,7 @@
 ﻿using CarFlowX.Application.Features.RepositoryPattern;
 using CarFlowX.Domain.Entities;
 using CarFlowX.Persistence.Context;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,12 +44,12 @@ namespace CarFlowX.Persistence.Repositories.CommentRepositories
 
         public List<Comment> GetCommentsByBlogId(int id)
         {
-            throw new NotImplementedException();
+            return _context.Set<Comment>().Where(x => x.BlogId == id).ToList();
         }
 
         public int GetCountCommentByBlog(int id)
         {
-            throw new NotImplementedException();
+            return _context.Comments.Where(x => x.BlogId == id).Count();
         }
 
         public void Remove(Comment entity)
