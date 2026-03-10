@@ -23,6 +23,12 @@ namespace CarFlowX.WebUI.ViewComponents.BlogViewComponents
                 var values = JsonConvert.DeserializeObject<GetBlogByIdDto>(jsonData);
                 return View(values);
             }
+
+            var responseMessage2 = await client.GetAsync($"https://localhost:7006/api/Comments/CommentCountByBlog?id=" + id);
+            var jsonData2 = await responseMessage2.Content.ReadAsStringAsync();
+            ViewBag.commentCount = jsonData2;
+
+
             return View();
         }
     }

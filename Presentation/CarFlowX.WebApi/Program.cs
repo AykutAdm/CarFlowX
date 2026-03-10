@@ -10,6 +10,7 @@ using CarFlowX.Application.Interfaces;
 using CarFlowX.Application.Interfaces.BlogInterfaces;
 using CarFlowX.Application.Interfaces.CarInterfaces;
 using CarFlowX.Application.Interfaces.CarPricingInterfaces;
+using CarFlowX.Application.Interfaces.RentACarInterfaces;
 using CarFlowX.Application.Interfaces.StatisticsInterfaces;
 using CarFlowX.Application.Interfaces.TagCloudInterfaces;
 using CarFlowX.Application.Services;
@@ -19,6 +20,7 @@ using CarFlowX.Persistence.Repositories.BlogRepositories;
 using CarFlowX.Persistence.Repositories.CarPricingRepositories;
 using CarFlowX.Persistence.Repositories.CarRepositories;
 using CarFlowX.Persistence.Repositories.CommentRepositories;
+using CarFlowX.Persistence.Repositories.RentACarRepositories;
 using CarFlowX.Persistence.Repositories.StatisticsRepositories;
 using CarFlowX.Persistence.Repositories.TagCloudRepositories;
 
@@ -34,6 +36,7 @@ builder.Services.AddScoped(typeof(ICarPricingRepository), typeof(CarPricingRepos
 builder.Services.AddScoped(typeof(ITagCloudRepository), typeof(TagCloudRepository));
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(CommentRepository<>));
 builder.Services.AddScoped(typeof(IStatisticsRepository), typeof(StatisticsRepository));
+builder.Services.AddScoped(typeof(IRentACarRepository), typeof(RentACarRepository));
 
 builder.Services.AddScoped<GetAboutQueryHandler>();
 builder.Services.AddScoped<GetAboutByIdQueryHandler>();
