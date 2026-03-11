@@ -114,5 +114,5 @@ Presentation katmanları ise API ve kullanıcı arayüzü üzerinden sisteme eri
 ### 🗄️ Database Diyagram
 
 <div align="center">
-  <img src="Images/Db.png" alt="Database Diyagram" width="1000" style="margin: 10px;">
+  <img src="Images/Db.png" alt="Database Diyagram" width="800" style="margin: 10px;">
 </div>
