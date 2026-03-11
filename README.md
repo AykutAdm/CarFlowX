@@ -107,8 +107,8 @@ Presentation katmanları ise API ve kullanıcı arayüzü üzerinden sisteme eri
 ### 🔑 Login ve Register Sayfası
 
 <div align="center">
-  <img src="Images/Login.png" alt="Login Sayfası" width="600" style="margin: 10px;">
-  <img src="Images/Register.png" alt="Register Sayfası" width="600" style="margin: 10px;">
+  <img src="Images/Login.png" alt="Login Sayfası" width="800" style="margin: 10px;">
+  <img src="Images/Register.png" alt="Register Sayfası" width="800" style="margin: 10px;">
 </div>
 
 ### 🗄️ Database Diyagram
