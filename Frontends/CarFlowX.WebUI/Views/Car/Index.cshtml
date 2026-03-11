@@ -4,25 +4,336 @@
     Layout = "~/Views/UILayout/Index.cshtml";
 }
 
-<section class="ftco-section bg-light">
+<style>
+    .cars-section {
+        padding: 80px 0;
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    }
+
+    .section-header {
+        text-align: center;
+        margin-bottom: 60px;
+    }
+
+    .section-title {
+        font-size: 48px;
+        font-weight: 800;
+        color: #1a1a1a;
+        margin-bottom: 16px;
+    }
+
+    .section-subtitle {
+        font-size: 16px;
+        color: #666;
+    }
+
+    .cars-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+        gap: 32px;
+    }
+
+    .car-card {
+        background: #fff;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+    }
+
+    .car-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 16px 50px rgba(0, 0, 0, 0.15);
+    }
+
+    .car-image {
+        position: relative;
+        width: 100%;
+        height: 260px;
+        overflow: hidden;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    .car-image::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.4) 100%);
+        z-index: 1;
+    }
+
+    .car-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.4s ease;
+    }
+
+    .car-card:hover .car-image img {
+        transform: scale(1.1);
+    }
+
+    .car-badge {
+        position: absolute;
+        top: 16px;
+        left: 16px;
+        z-index: 2;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 8px 16px;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-radius: 10px;
+        font-size: 13px;
+        font-weight: 700;
+        color: #667eea;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .car-badge i {
+        font-size: 16px;
+    }
+
+    .car-content {
+        padding: 28px;
+    }
+
+    .car-model {
+        font-size: 24px;
+        font-weight: 700;
+        color: #1a1a1a;
+        margin-bottom: 8px;
+        line-height: 1.3;
+    }
+
+    .car-brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 12px;
+        background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+        border: 1px solid rgba(102, 126, 234, 0.2);
+        border-radius: 8px;
+        font-size: 13px;
+        font-weight: 600;
+        color: #667eea;
+        margin-bottom: 20px;
+    }
+
+    .car-price-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px;
+        background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+        border-radius: 12px;
+        margin-bottom: 20px;
+    }
+
+    .price-label {
+        font-size: 13px;
+        color: #666;
+        margin-bottom: 4px;
+    }
+
+    .car-price {
+        font-size: 32px;
+        font-weight: 800;
+        color: #667eea;
+        line-height: 1;
+    }
+
+    .price-period {
+        font-size: 14px;
+        font-weight: 600;
+        color: #999;
+    }
+
+    .car-features {
+        display: flex;
+        gap: 16px;
+        margin-bottom: 24px;
+        padding-bottom: 24px;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    .feature-item {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 13px;
+        color: #666;
+    }
+
+    .feature-item i {
+        font-size: 16px;
+        color: #667eea;
+    }
+
+    .car-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+
+    .btn-rent {
+        padding: 14px 24px;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: #fff;
+        border: none;
+        border-radius: 12px;
+        font-size: 15px;
+        font-weight: 700;
+        text-decoration: none;
+        text-align: center;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    }
+
+    .btn-rent:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        color: #fff;
+    }
+
+    .btn-details {
+        padding: 14px 24px;
+        background: #fff;
+        color: #667eea;
+        border: 2px solid #667eea;
+        border-radius: 12px;
+        font-size: 15px;
+        font-weight: 700;
+        text-decoration: none;
+        text-align: center;
+        transition: all 0.3s ease;
+    }
+
+    .btn-details:hover {
+        background: #667eea;
+        color: #fff;
+    }
+
+    .favorite-btn {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        z-index: 2;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .favorite-btn:hover {
+        transform: scale(1.1);
+        background: #fff;
+    }
+
+    .favorite-btn i {
+        font-size: 20px;
+        color: #667eea;
+    }
+
+    @@media (max-width: 992px) {
+        .cars-grid {
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        }
+    }
+
+    @@media (max-width: 768px) {
+        .section-title {
+            font-size: 36px;
+        }
+
+        .cars-grid {
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+
+        .car-actions {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<section class="cars-section">
     <div class="container">
-        <div class="row">
+        <div class="section-header">
+            <h2 class="section-title">Araç Kiralama</h2>
+            <p class="section-subtitle">Hayalinizdeki aracı seçin ve hemen kiralayın</p>
+        </div>
+
+        <div class="cars-grid">
             @foreach (var item in Model)
             {
-                <div class="col-md-4">
-                    <div class="car-wrap rounded ftco-animate">
-                        <div class="img rounded d-flex align-items-end" style="background-image: url(@item.CoverImageUrl);">
+                <div class="car-card">
+                    <div class="car-image">
+                        <img src="@item.CoverImageUrl" alt="@item.Model" loading="lazy">
+                        
+                        <div class="car-badge">
+                            <i class="ri-car-line"></i>
+                            Müsait
                         </div>
-                        <div class="text">
-                            <h2 class="mb-0"><a href="car-single.html">@item.Model</a></h2>
-                            <div class="d-flex mb-3">
-                                <span class="cat">@item.Brand</span>
-                                <p class="price ml-auto">@item.Amount ₺ <span>/Günlük</span></p>
+
+                        <button class="favorite-btn">
+                            <i class="ri-heart-line"></i>
+                        </button>
+                    </div>
+
+                    <div class="car-content">
+                        <h3 class="car-model">@item.Model</h3>
+                        
+                        <span class="car-brand">
+                            <i class="ri-steering-2-line"></i>
+                            @item.Brand
+                        </span>
+
+                        <div class="car-price-wrapper">
+                            <div>
+                                <div class="price-label">Günlük Kiralama</div>
+                                <div class="car-price">@item.Amount ₺</div>
                             </div>
-                            <p class="d-flex mb-0 d-block">
-                                <a href="/Reservation/Index/@item.CarId" class="btn btn-primary py-2 mr-1">Hemen Kirala</a>
-                                <a href="/Car/CarDetail/@item.CarId" class="btn btn-secondary py-2 ml-1">Detaylar</a>
-                            </p>
+                            <div class="price-period">/gün</div>
+                        </div>
+
+                        <div class="car-features">
+                            <div class="feature-item">
+                                <i class="ri-roadster-line"></i>
+                                Otomatik
+                            </div>
+                            <div class="feature-item">
+                                <i class="ri-gas-station-line"></i>
+                                Benzin
+                            </div>
+                            <div class="feature-item">
+                                <i class="ri-user-3-line"></i>
+                                5 Kişi
+                            </div>
+                        </div>
+
+                        <div class="car-actions">
+                            <a href="/Reservation/Index/@item.CarId" class="btn-rent">
+                                <i class="ri-key-line"></i>
+                                Hemen Kirala
+                            </a>
+                            <a href="/Car/CarDetail/@item.CarId" class="btn-details">
+                                <i class="ri-information-line"></i>
+                                Detaylar
+                            </a>
                         </div>
                     </div>
                 </div>

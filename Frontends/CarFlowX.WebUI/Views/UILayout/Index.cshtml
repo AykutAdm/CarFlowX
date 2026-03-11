@@ -1,13 +1,13 @@
-﻿@{
+@{
     Layout = null;
 }
 
 <!DOCTYPE html>
 <html lang="en">
 
-@await Component.InvokeAsync("_UILayoutHeadComponentPartial")
+@await Component.InvokeAsync("_UILayoutHeadComponentPartial", new { isDarkTheme = true })
 
-<body>
+<body class="default-dark-theme">
 
     @await Component.InvokeAsync("_UILayoutNavbarComponentPartial")
 

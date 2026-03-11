@@ -1,4 +1,4 @@
-﻿@model List<ResultCarFeatureByCarIdDto>
+@model List<ResultCarFeatureByCarIdDto>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/AdminLayout/Index.cshtml";
@@ -8,12 +8,14 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-xl-12">
-                <div class="card">
+                <div class="card admin-table-card">
                     <div class="card-body">
-                        <h4 class="card-title">Araca Ait Özellikler Listesi</h4>
-                        <p class="card-subtitle mb-4">
-                            Araca ait özellik eklemesi yapabilir,mevcut özellikleri kaldırabilir, ilgili güncellemeleri gerçekleştirebilirsiniz.
-                        </p>
+                        <div class="admin-page-header">
+                            <h4 class="card-title admin-page-title">Araca Ait Özellikler Listesi</h4>
+                            <p class="card-subtitle admin-page-desc mb-0">
+                                Araca ait özellik ekleyebilir, mevcut özellikleri kaldırabilir veya güncelleyebilirsiniz.
+                            </p>
+                        </div>
                         <form method="post">
                             @for (int i = 0; i < Model.Count; i++)
                             {

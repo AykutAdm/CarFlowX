@@ -1,4 +1,4 @@
-﻿@model List<ResultAllBlogsWithAuthorDto>
+@model List<ResultAllBlogsWithAuthorDto>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/AdminLayout/Index.cshtml";
@@ -9,12 +9,14 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-xl-12">
-                <div class="card">
+                <div class="card admin-table-card">
                     <div class="card-body">
-                        <h4 class="card-title">Blog Listesi ve İşlemleri</h4>
-                        <p class="card-subtitle mb-4">
-                            Bloglarla ilgili silme, güncelleme ve blog listesi erişimini görebilirsiniz. Yeni blog ekleme işlemi admin tarafından yapılmamaktadır. Eğer blog ekleme işlemi yapmak isterseniz sisteme yazar olarak giriş yapmanız gerekmektedir. Her yazar sadece kendi bloglarını düzenleyebilir. Bunun için uygulamada Login/WriterLogin sayfası üzerinden giriş yapabilirsiniz.
-                        </p>
+                        <div class="admin-page-header">
+                            <h4 class="card-title admin-page-title">Blog Listesi ve İşlemleri</h4>
+                            <p class="card-subtitle admin-page-desc mb-0">
+                                Bloglarla ilgili silme, güncelleme ve listeleme işlemlerini bu sayfadan gerçekleştirebilirsiniz. Yeni blog eklemek için yazar olarak giriş yapmanız gerekmektedir.
+                            </p>
+                        </div>
                         <div class="table-responsive">
                             <table class="table mb-0">
                                 <thead>

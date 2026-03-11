@@ -1,4 +1,4 @@
-﻿@model List<ResultFooterAddressDto>
+@model List<ResultFooterAddressDto>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/AdminLayout/Index.cshtml";
@@ -8,12 +8,14 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-xl-12">
-                <div class="card">
+                <div class="card admin-table-card">
                     <div class="card-body">
-                        <h4 class="card-title">İletişim ve Footer Alanı Adres Sayfası</h4>
-                        <p class="card-subtitle mb-4">
-                            İletişim ve Footer kısımlarında yer alan adres bilgilerine ait işlemleri bu sayfadan gerçekleştirebilirsiniz. Harita bilgisini lokasyon değeri olarak Google Map üzerinden alabilirsiniz.
-                        </p>
+                        <div class="admin-page-header">
+                            <h4 class="card-title admin-page-title">İletişim ve Footer Adres Alanı</h4>
+                            <p class="card-subtitle admin-page-desc mb-0">
+                                İletişim ve Footer kısımlarında yer alan adres bilgilerini bu sayfadan yönetebilirsiniz. Harita bilgisini Google Map üzerinden alabilirsiniz.
+                            </p>
+                        </div>
                         <div class="table-responsive">
                             <table class="table mb-0">
                                 <thead>
@@ -40,9 +42,14 @@
                                     }
                                 </tbody>
                             </table>
-                            <a href="/Admin/AdminFooterAddress/CreateFooterAddress" class="btn btn-outline-primary">Yeni Adres Girişi</a>
                         </div>
                     </div>
+                </div>
+                <div class="admin-add-section">
+                    <a href="/Admin/AdminFooterAddress/CreateFooterAddress" class="btn-admin-add">
+                        <i class="ri-add-line"></i>
+                        Yeni Adres Ekle
+                    </a>
                 </div>
             </div>
         </div>

@@ -1,0 +1,382 @@
+/* CarFlowX Admin - Modern Dark Theme for Index Pages */
+
+/* Navbar/Header - dark theme */
+#page-topbar .navbar-header {
+    background-color: #1e293b !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+}
+
+#page-topbar .header-item {
+    color: #e2e8f0 !important;
+}
+
+#page-topbar .header-item:hover {
+    color: #f8fafc !important;
+    background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+#page-topbar .dropdown-menu {
+    background: #1e293b !important;
+    border: 1px solid #334155 !important;
+}
+
+#page-topbar .dropdown-item {
+    color: #cbd5e1 !important;
+}
+
+#page-topbar .dropdown-item:hover {
+    background: rgba(255, 255, 255, 0.08) !important;
+    color: #f8fafc !important;
+}
+
+/* Main content area - dark background */
+.main-content {
+    background: #0f172a !important;
+    min-height: 100vh;
+}
+
+/* Page content - dark theme */
+.page-content {
+    background: #0f172a !important;
+    padding-top: calc(70px + 24px) !important;
+}
+
+/* Modern admin page header (for table pages) */
+.admin-page-header {
+    margin-bottom: 28px;
+}
+
+.admin-page-header .admin-page-title {
+    font-size: 24px !important;
+    font-weight: 700 !important;
+    color: #e2e8f0 !important;
+    margin-bottom: 8px !important;
+}
+
+.admin-page-header .admin-page-desc {
+    font-size: 14px !important;
+    color: #94a3b8 !important;
+    line-height: 1.6 !important;
+}
+
+/* Modern add-new section (Banner tarzı) */
+.admin-add-section {
+    margin-top: 28px;
+    text-align: center;
+    padding: 36px 24px;
+    background: #1e293b;
+    border: 2px dashed #475569;
+    border-radius: 16px;
+    transition: all 0.3s;
+}
+
+.admin-add-section:hover {
+    border-color: #6366f1;
+    background: rgba(30, 41, 59, 0.8);
+}
+
+.btn-admin-add {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    color: #fff !important;
+    border: none;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none !important;
+    transition: all 0.3s;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+}
+
+.btn-admin-add:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+    color: #fff !important;
+}
+
+/* Table container spacing */
+.page-content .admin-table-card .card-body {
+    padding: 28px !important;
+}
+
+/* Card styling - modern dark */
+.page-content .card {
+    background: #1e293b !important;
+    border: 1px solid #334155 !important;
+    border-radius: 16px !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -2px rgba(0, 0, 0, 0.2) !important;
+}
+
+.page-content .card-body {
+    background: transparent !important;
+    padding: 24px 28px !important;
+}
+
+/* Card title - high contrast white */
+.page-content .card-title {
+    font-size: 20px !important;
+    font-weight: 700 !important;
+    color: #e2e8f0 !important;
+    margin-bottom: 8px !important;
+}
+
+/* Card subtitle - readable gray */
+.page-content .card-subtitle {
+    font-size: 14px !important;
+    color: #94a3b8 !important;
+    line-height: 1.6 !important;
+}
+
+/* Table - dark theme with readable text */
+.page-content .table {
+    color: #e2e8f0 !important;
+}
+
+.page-content .table thead th {
+    background: #0f172a !important;
+    color: #94a3b8 !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    padding: 14px 16px !important;
+    border-bottom: 1px solid #334155 !important;
+}
+
+.page-content .table tbody td {
+    color: #cbd5e1 !important;
+    padding: 16px !important;
+    border-bottom: 1px solid #334155 !important;
+    vertical-align: middle !important;
+}
+
+.page-content .table tbody tr:hover td {
+    background: rgba(51, 65, 85, 0.5) !important;
+}
+
+/* Buttons - dark theme compatible */
+.page-content .btn-outline-primary {
+    background: rgba(99, 102, 241, 0.15) !important;
+    color: #a5b4fc !important;
+    border-color: rgba(99, 102, 241, 0.4) !important;
+}
+
+.page-content .btn-outline-primary:hover {
+    background: rgba(99, 102, 241, 0.3) !important;
+    color: #c7d2fe !important;
+    border-color: #6366f1 !important;
+}
+
+.page-content .btn-outline-success {
+    background: rgba(34, 197, 94, 0.15) !important;
+    color: #86efac !important;
+    border-color: rgba(34, 197, 94, 0.4) !important;
+}
+
+.page-content .btn-outline-success:hover {
+    background: rgba(34, 197, 94, 0.3) !important;
+    color: #bbf7d0 !important;
+    border-color: #22c55e !important;
+}
+
+.page-content .btn-outline-danger {
+    background: rgba(239, 68, 68, 0.15) !important;
+    color: #fca5a5 !important;
+    border-color: rgba(239, 68, 68, 0.4) !important;
+}
+
+.page-content .btn-outline-danger:hover {
+    background: rgba(239, 68, 68, 0.3) !important;
+    color: #fecaca !important;
+    border-color: #ef4444 !important;
+}
+
+.page-content .btn-outline-dark {
+    background: rgba(148, 163, 184, 0.15) !important;
+    color: #cbd5e1 !important;
+    border-color: rgba(148, 163, 184, 0.4) !important;
+}
+
+.page-content .btn-outline-dark:hover {
+    background: rgba(148, 163, 184, 0.3) !important;
+    color: #e2e8f0 !important;
+    border-color: #64748b !important;
+}
+
+.page-content .btn-outline-warning {
+    background: rgba(251, 191, 36, 0.15) !important;
+    color: #fde047 !important;
+    border-color: rgba(251, 191, 36, 0.4) !important;
+}
+
+.page-content .btn-outline-warning:hover {
+    background: rgba(251, 191, 36, 0.3) !important;
+    color: #fef08a !important;
+    border-color: #eab308 !important;
+}
+
+.page-content .btn-outline-info {
+    background: rgba(34, 211, 238, 0.15) !important;
+    color: #67e8f9 !important;
+    border-color: rgba(34, 211, 238, 0.4) !important;
+}
+
+.page-content .btn-outline-info:hover {
+    background: rgba(34, 211, 238, 0.3) !important;
+    color: #a5f3fc !important;
+    border-color: #22d3ee !important;
+}
+
+/* Table responsive */
+.page-content .table-responsive {
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+/* Footer - better contrast */
+.footer {
+    color: #94a3b8 !important;
+    border-top-color: #334155 !important;
+    background: #0f172a !important;
+}
+
+.footer .text-sm-right {
+    color: #94a3b8 !important;
+}
+
+/* Body dark background */
+body {
+    background: #0f172a !important;
+}
+
+/* Alert/Warning boxes in dark theme */
+.page-content .alert-warning {
+    background: rgba(251, 191, 36, 0.12) !important;
+    border-color: rgba(251, 191, 36, 0.35) !important;
+}
+
+/* Form controls in header dropdown */
+#page-topbar .form-control {
+    background: #0f172a !important;
+    border-color: #334155 !important;
+    color: #e2e8f0 !important;
+}
+
+#page-topbar .form-control::placeholder {
+    color: #64748b !important;
+}
+
+/* Nested cards (e.g. AdminComment) */
+.page-content .card .card {
+    background: rgba(15, 23, 42, 0.8) !important;
+    border-color: #475569 !important;
+}
+
+.page-content .card .card-header {
+    background: rgba(15, 23, 42, 0.6) !important;
+    color: #e2e8f0 !important;
+    border-bottom-color: #334155 !important;
+}
+
+.page-content .form-check-label {
+    color: #cbd5e1 !important;
+}
+
+.page-content .card-text {
+    color: #94a3b8 !important;
+}
+
+/* DataTables dark theme */
+.page-content .dataTables_wrapper {
+    color: #cbd5e1;
+}
+
+.page-content #basic-datatable {
+    color: #cbd5e1 !important;
+}
+
+/* Statistics page - modern dark stat cards */
+.page-content .stat-card {
+    background: #1e293b !important;
+    border: 1px solid #334155 !important;
+    border-radius: 16px !important;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.page-content .stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    border-radius: 16px 0 0 16px;
+}
+
+.page-content .stat-card.stat-primary::before { background: linear-gradient(180deg, #6366f1, #8b5cf6); }
+.page-content .stat-card.stat-success::before { background: linear-gradient(180deg, #22c55e, #10b981); }
+.page-content .stat-card.stat-warning::before { background: linear-gradient(180deg, #eab308, #f59e0b); }
+.page-content .stat-card.stat-info::before { background: linear-gradient(180deg, #0ea5e9, #06b6d4); }
+
+.page-content .stat-card:hover {
+    border-color: #475569 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.page-content .stat-card .card-body {
+    padding: 20px 24px !important;
+}
+
+.page-content .stat-card .stat-badge {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 8px;
+    letter-spacing: 0.3px;
+}
+
+.page-content .stat-card.stat-primary .stat-badge { background: rgba(99, 102, 241, 0.2); color: #a5b4fc; }
+.page-content .stat-card.stat-success .stat-badge { background: rgba(34, 197, 94, 0.2); color: #86efac; }
+.page-content .stat-card.stat-warning .stat-badge { background: rgba(234, 179, 8, 0.2); color: #fde047; }
+.page-content .stat-card.stat-info .stat-badge { background: rgba(14, 165, 233, 0.2); color: #67e8f9; }
+
+.page-content .stat-card .stat-title {
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    color: #94a3b8 !important;
+    margin-bottom: 12px !important;
+}
+
+.page-content .stat-card .stat-value {
+    font-size: 28px !important;
+    font-weight: 700 !important;
+    color: #e2e8f0 !important;
+    margin-bottom: 8px !important;
+}
+
+.page-content .stat-card .stat-meta {
+    font-size: 12px;
+    color: #64748b;
+}
+
+.page-content .stat-card .progress {
+    height: 4px !important;
+    background: rgba(15, 23, 42, 0.8) !important;
+    border-radius: 4px;
+    margin-top: 12px;
+}
+
+.page-content .stat-card .progress-bar {
+    border-radius: 4px;
+}
+
+.page-content .stat-card.stat-primary .progress-bar { background: linear-gradient(90deg, #6366f1, #8b5cf6) !important; }
+.page-content .stat-card.stat-success .progress-bar { background: linear-gradient(90deg, #22c55e, #10b981) !important; }
+.page-content .stat-card.stat-warning .progress-bar { background: linear-gradient(90deg, #eab308, #f59e0b) !important; }
+.page-content .stat-card.stat-info .progress-bar { background: linear-gradient(90deg, #0ea5e9, #06b6d4) !important; }

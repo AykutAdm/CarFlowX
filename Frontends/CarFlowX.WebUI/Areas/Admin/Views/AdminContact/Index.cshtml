@@ -1,4 +1,4 @@
-﻿@model List<ResultContactDto>
+@model List<ResultContactDto>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/AdminLayout/Index.cshtml";
@@ -14,14 +14,17 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <div class="card">
+                <div class="card admin-table-card">
                     <div class="card-body">
-                        <h4 class="card-title">Gelen Mesaj Sayfası</h4>
-                        <p class="card-subtitle mb-4">
-                            Ana sayfa üzerinden kullanıcıların iletişim kısmı aracılığıyla gönderdikleri mesajların listesinin bulunduğu sayfadır. İlgili satıra tıklayıp mesajın detayını görebilirsiniz.
-                        </p>
+                        <div class="admin-page-header">
+                            <h4 class="card-title admin-page-title">Gelen Mesajlar</h4>
+                            <p class="card-subtitle admin-page-desc mb-0">
+                                Kullanıcıların iletişim formu üzerinden gönderdikleri mesajların listesidir. İlgili satıra tıklayarak mesaj detayını görebilirsiniz.
+                            </p>
+                        </div>
 
-                        <table id="basic-datatable" class="table dt-responsive nowrap">
+                        <div class="table-responsive">
+                        <table id="basic-datatable" class="table table mb-0 dt-responsive nowrap">
                             <thead>
                                 <tr>
                                     <th>#</th>
@@ -49,6 +52,7 @@
                                 }
                             </tbody>
                         </table>
+                        </div>
 
                     </div>
                 </div>

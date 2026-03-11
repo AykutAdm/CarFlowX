@@ -1,4 +1,4 @@
-﻿@model List<ResultCategoryDto>
+@model List<ResultCategoryDto>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/AdminLayout/Index.cshtml";
@@ -9,12 +9,14 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-xl-12">
-                <div class="card">
+                <div class="card admin-table-card">
                     <div class="card-body">
-                        <h4 class="card-title">Blog Kategorileri Listesi</h4>
-                        <p class="card-subtitle mb-4">
-                            Bloglara ait kategorilerle ilgili işlemlerin gerçekleştirileceği sayfadır. Kategori girişi yaparken bilgileri eksiksiz girmeye özen gösterelim.
-                        </p>
+                        <div class="admin-page-header">
+                            <h4 class="card-title admin-page-title">Blog Kategorileri Listesi</h4>
+                            <p class="card-subtitle admin-page-desc mb-0">
+                                Bloglara ait kategorileri bu sayfadan yönetebilirsiniz. Kategori girişi yaparken bilgileri eksiksiz girmeye özen gösterin.
+                            </p>
+                        </div>
                         <div class="table-responsive">
                             <table class="table mb-0">
                                 <thead>
@@ -40,9 +42,14 @@
                                     }
                                 </tbody>
                             </table>
-                            <a href="/Admin/AdminCategory/CreateCategory" class="btn btn-outline-primary">Yeni Kategori Girişi</a>
                         </div>
                     </div>
+                </div>
+                <div class="admin-add-section">
+                    <a href="/Admin/AdminCategory/CreateCategory" class="btn-admin-add">
+                        <i class="ri-add-line"></i>
+                        Yeni Kategori Ekle
+                    </a>
                 </div>
             </div>
         </div>

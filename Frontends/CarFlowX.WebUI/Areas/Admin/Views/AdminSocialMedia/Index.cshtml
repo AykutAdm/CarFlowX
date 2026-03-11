@@ -1,4 +1,4 @@
-﻿@model List<ResultSocialMediaDto>
+@model List<ResultSocialMediaDto>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/AdminLayout/Index.cshtml";
@@ -9,12 +9,14 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-xl-12">
-                <div class="card">
+                <div class="card admin-table-card">
                     <div class="card-body">
-                        <h4 class="card-title">Sosyal Medya Hesap Linkleri Yönetimi</h4>
-                        <p class="card-subtitle mb-4">
-                            Kullandığınız sosyal medya hesaplarına ait bilgileri yönetebileceğiniz sayfadır.
-                        </p>
+                        <div class="admin-page-header">
+                            <h4 class="card-title admin-page-title">Sosyal Medya Hesap Linkleri</h4>
+                            <p class="card-subtitle admin-page-desc mb-0">
+                                Kullandığınız sosyal medya hesaplarına ait linkleri bu sayfadan yönetebilirsiniz.
+                            </p>
+                        </div>
                         <div class="table-responsive">
                             <table class="table mb-0">
                                 <thead>
@@ -40,9 +42,14 @@
                                     }
                                 </tbody>
                             </table>
-                            <a href="/Admin/AdminSocialMedia/CreateSocialMedia" class="btn btn-outline-primary">Yeni Sosyal Meda Girişi</a>
                         </div>
                     </div>
+                </div>
+                <div class="admin-add-section">
+                    <a href="/Admin/AdminSocialMedia/CreateSocialMedia" class="btn-admin-add">
+                        <i class="ri-add-line"></i>
+                        Yeni Sosyal Medya Ekle
+                    </a>
                 </div>
             </div>
         </div>

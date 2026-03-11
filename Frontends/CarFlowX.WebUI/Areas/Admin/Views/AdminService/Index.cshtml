@@ -1,4 +1,4 @@
-﻿@model List<ResultServiceDto>
+@model List<ResultServiceDto>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/AdminLayout/Index.cshtml";
@@ -9,12 +9,14 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-xl-12">
-                <div class="card">
+                <div class="card admin-table-card">
                     <div class="card-body">
-                        <h4 class="card-title">Hizmet Bilgileri Alanı</h4>
-                        <p class="card-subtitle mb-4">
-                            Ana sayfa ve hizmetler bölümünde yer alan hizmet listesinin admin tarafındaki işlemlerini aşağıdaki sayfadan gerçekleştirebilirsiniz. Tema bütünlüğünü korumak adına 4 tane hizmet girişi yapınız.
-                        </p>
+                        <div class="admin-page-header">
+                            <h4 class="card-title admin-page-title">Hizmet Bilgileri Alanı</h4>
+                            <p class="card-subtitle admin-page-desc mb-0">
+                                Ana sayfa ve hizmetler bölümünde yer alan hizmet listesinin admin tarafındaki işlemlerini aşağıdaki sayfadan gerçekleştirebilirsiniz. Tema bütünlüğünü korumak adına 4 tane hizmet girişi yapınız.
+                            </p>
+                        </div>
                         <div class="table-responsive">
                             <table class="table mb-0">
                                 <thead>
@@ -42,9 +44,14 @@
                                     }
                                 </tbody>
                             </table>
-                            <a href="/Admin/AdminService/CreateService" class="btn btn-outline-primary">Yeni Hizmet Girişi</a>
                         </div>
                     </div>
+                </div>
+                <div class="admin-add-section">
+                    <a href="/Admin/AdminService/CreateService" class="btn-admin-add">
+                        <i class="ri-add-line"></i>
+                        Yeni Hizmet Ekle
+                    </a>
                 </div>
             </div>
         </div>

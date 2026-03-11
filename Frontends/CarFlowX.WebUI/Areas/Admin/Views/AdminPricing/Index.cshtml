@@ -1,4 +1,4 @@
-﻿@model List<ResultPricingDto>
+@model List<ResultPricingDto>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/AdminLayout/Index.cshtml";
@@ -9,12 +9,14 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-xl-12">
-                <div class="card">
+                <div class="card admin-table-card">
                     <div class="card-body">
-                        <h4 class="card-title">Ödeme Türleri Alanı</h4>
-                        <p class="card-subtitle mb-4">
-                            Araçların günlük, kiralık, aylık veya benzeri kiralama opsiyonlarının yer aldığı sayfadır. Bu sayfa üzerinden yeni bir zaman periyodu eklenebilir, silinebilir veya güncellenebilir.
-                        </p>
+                        <div class="admin-page-header">
+                            <h4 class="card-title admin-page-title">Ödeme Türleri Alanı</h4>
+                            <p class="card-subtitle admin-page-desc mb-0">
+                                Araçların günlük, haftalık, aylık kiralama opsiyonlarını bu sayfa üzerinden yönetebilirsiniz.
+                            </p>
+                        </div>
                         <div class="table-responsive">
                             <table class="table mb-0">
                                 <thead>
@@ -38,9 +40,14 @@
                                     }
                                 </tbody>
                             </table>
-                            <a href="/Admin/AdminPricing/CreatePricing" class="btn btn-outline-primary">Yeni Ödeme Türü Girişi</a>
                         </div>
                     </div>
+                </div>
+                <div class="admin-add-section">
+                    <a href="/Admin/AdminPricing/CreatePricing" class="btn-admin-add">
+                        <i class="ri-add-line"></i>
+                        Yeni Ödeme Türü Ekle
+                    </a>
                 </div>
             </div>
         </div>

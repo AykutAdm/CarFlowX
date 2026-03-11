@@ -1,63 +1,447 @@
-﻿@model List<ResultBannerDto>
+@model List<ResultBannerDto>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/AdminLayout/Index.cshtml";
 }
 
-<div class="page-content">
-    <div class="container-fluid">
 
-        <!-- start page title -->
-        <div class="row">
-            <div class="col-xl-12">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">Ana Sayfa Banner Alanı</h4>
-                        <p class="card-subtitle mb-4">
-                            Ana sayfanın banner alanında bulunan bilgileri aşağıdan düzenleyebilirsiniz. Tema bütünlüğünün bozulmaması adına lütfen sadece 1 tane veri girişi yapınız. Aksi durumlarda tema bütünlüğün bozulacaktır.
-                        </p>
-                        <div class="table-responsive">
-                            <table class="table mb-0">
-                                <thead>
-                                    <tr>
-                                        <th>Başlık</th>
-                                        <th>Açıklama</th>
-                                        <th>Video URL</th>
-                                        <th>Video Açıklama</th>
-                                        <th>Sil</th>
-                                        <th>Güncelle</th>
-                                        <th>Youtube'da Aç</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach (var item in Model)
-                                    {
-                                        <tr>
-                                            <td>@item.Title</td>
-                                            <td>@item.Description</td>
-                                            <td>@item.VideoUrl</td>
-                                            <td>@item.VideoDescription</td>
-                                            <td><a href="/Admin/AdminBanner/RemoveBanner/@item.BannerId" class="btn btn-outline-danger">Sil</a></td>
-                                            <td><a href="/Admin/AdminBanner/UpdateBanner/@item.BannerId" class="btn btn-outline-success">Güncelle</a></td>
-                                            <td><a href="/Admin/AdminBanner/RemoveBanner/@item.BannerId" class="btn btn-outline-dark">Youtube'da Aç</a></td>
-                                        </tr>
-                                    }
-                                </tbody>
-                            </table>
-                            <a href="/Admin/AdminBanner/CreateBanner" class="btn btn-outline-primary">Yeni Banner Girişi</a>
+<style>
+    .banner-page {
+        padding-top: calc(70px + 24px) !important;
+    }
+
+    .page-header {
+        margin-bottom: 32px;
+    }
+
+    .page-title {
+        font-size: 28px;
+        font-weight: 700;
+        color: #e2e8f0;
+        margin-bottom: 8px;
+    }
+
+    .page-description {
+        font-size: 14px;
+        color: #94a3b8;
+        line-height: 1.6;
+        max-width: 900px;
+    }
+
+    .alert-warning {
+        background: rgba(251, 191, 36, 0.15);
+        border: 1px solid rgba(251, 191, 36, 0.3);
+        border-radius: 12px;
+        padding: 16px 20px;
+        margin-bottom: 24px;
+        display: flex;
+        align-items: start;
+        gap: 12px;
+    }
+
+        .alert-warning i {
+            color: #fbbf24;
+            font-size: 20px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+    .alert-content {
+        flex: 1;
+    }
+
+    .alert-title {
+        font-size: 14px;
+        font-weight: 600;
+        color: #fbbf24;
+        margin-bottom: 4px;
+    }
+
+    .alert-text {
+        font-size: 13px;
+        color: #cbd5e1;
+        line-height: 1.5;
+    }
+
+    .banner-grid {
+        display: grid;
+        gap: 24px;
+    }
+
+    .banner-card {
+        background: #1e293b;
+        border: 1px solid #334155;
+        border-radius: 16px;
+        overflow: hidden;
+        transition: all 0.3s;
+    }
+
+        .banner-card:hover {
+            border-color: #6366f1;
+            box-shadow: 0 8px 30px rgba(99, 102, 241, 0.2);
+        }
+
+    .banner-content {
+        padding: 28px;
+    }
+
+    .banner-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #334155;
+    }
+
+    .banner-title-section h3 {
+        font-size: 20px;
+        font-weight: 700;
+        color: #e2e8f0;
+        margin-bottom: 8px;
+    }
+
+    .banner-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 12px;
+        background: rgba(34, 197, 94, 0.15);
+        border: 1px solid rgba(34, 197, 94, 0.3);
+        border-radius: 8px;
+        font-size: 12px;
+        font-weight: 600;
+        color: #86efac;
+    }
+
+    .banner-info-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin-bottom: 24px;
+    }
+
+    .info-item {
+        background: rgba(15, 23, 42, 0.8);
+        padding: 16px;
+        border-radius: 12px;
+        border: 1px solid #475569;
+    }
+
+    .info-label {
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: #64748b;
+        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+        .info-label i {
+            font-size: 14px;
+        }
+
+    .info-value {
+        font-size: 14px;
+        color: #e2e8f0;
+        line-height: 1.6;
+        word-break: break-word;
+    }
+
+    .video-preview {
+        background: #0f172a;
+        padding: 20px;
+        border-radius: 12px;
+        border: 1px solid #334155;
+        margin-bottom: 24px;
+    }
+
+    .video-preview-label {
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: #64748b;
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+        .video-preview-label i {
+            font-size: 14px;
+        }
+
+    .video-preview .video-link {
+        color: #fca5a5 !important;
+    }
+
+    .video-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 16px;
+        background: rgba(239, 68, 68, 0.15);
+        border: 1px solid rgba(239, 68, 68, 0.3);
+        border-radius: 8px;
+        color: #fca5a5;
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: 600;
+        transition: all 0.2s;
+    }
+
+        .video-link:hover {
+            background: rgba(239, 68, 68, 0.25);
+            color: #fca5a5;
+            transform: translateX(4px);
+        }
+
+    .banner-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 12px;
+    }
+
+    .action-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 12px 20px;
+        border-radius: 10px;
+        font-size: 14px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.2s;
+        border: 1px solid transparent;
+    }
+
+    .btn-edit {
+        background: rgba(34, 197, 94, 0.15);
+        color: #86efac;
+        border-color: rgba(34, 197, 94, 0.3);
+    }
+
+        .btn-edit:hover {
+            background: rgba(34, 197, 94, 0.25);
+            transform: translateY(-2px);
+        }
+
+    .btn-youtube {
+        background: rgba(239, 68, 68, 0.15);
+        color: #fca5a5;
+        border-color: rgba(239, 68, 68, 0.3);
+    }
+
+        .btn-youtube:hover {
+            background: rgba(239, 68, 68, 0.25);
+            transform: translateY(-2px);
+        }
+
+    .btn-delete {
+        background: rgba(148, 163, 184, 0.15);
+        color: #cbd5e1;
+        border-color: rgba(148, 163, 184, 0.3);
+    }
+
+        .btn-delete:hover {
+            background: rgba(239, 68, 68, 0.25);
+            color: #fca5a5;
+            border-color: rgba(239, 68, 68, 0.3);
+            transform: translateY(-2px);
+        }
+
+    .add-banner-section {
+        margin-top: 32px;
+        text-align: center;
+        padding: 40px;
+        background: #1e293b;
+        border: 2px dashed #334155;
+        border-radius: 16px;
+        transition: all 0.3s;
+    }
+
+        .add-banner-section:hover {
+            border-color: #6366f1;
+            background: #0f172a;
+        }
+
+    .btn-add-banner {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 14px 28px;
+        background: linear-gradient(135deg, #6366f1, #8b5cf6);
+        color: #fff;
+        border: none;
+        border-radius: 12px;
+        font-size: 15px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s;
+        box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+    }
+
+        .btn-add-banner:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+            color: #fff;
+        }
+
+    .empty-state {
+        text-align: center;
+        padding: 80px 20px;
+        background: #1e293b;
+        border-radius: 16px;
+        border: 1px solid #334155;
+    }
+
+    .empty-icon {
+        font-size: 64px;
+        color: #475569;
+        margin-bottom: 16px;
+    }
+
+    .empty-title {
+        font-size: 18px;
+        font-weight: 600;
+        color: #cbd5e1;
+        margin-bottom: 8px;
+    }
+
+    .empty-text {
+        font-size: 14px;
+        color: #94a3b8;
+        margin-bottom: 24px;
+    }
+
+    @@media (max-width: 992px) {
+        .banner-info-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .banner-actions {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<div class="page-content banner-page">
+    <!-- Page Header -->
+    <div class="page-header">
+        <h1 class="page-title">Ana Sayfa Banner Yönetimi</h1>
+        <p class="page-description">
+            Ana sayfanızda görünen banner bölümünü yönetin. Başlık, açıklama ve video içeriğini özelleştirin.
+        </p>
+    </div>
+
+    <!-- Warning Alert -->
+    <div class="alert-warning">
+        <i class="ri-error-warning-line"></i>
+        <div class="alert-content">
+            <div class="alert-title">Önemli Uyarı</div>
+            <div class="alert-text">
+                Tema tutarlılığını korumak için lütfen yalnızca BİR banner girişi tutun. Birden fazla giriş ana sayfada yerleşim sorunlarına neden olabilir.
+            </div>
+        </div>
+    </div>
+
+    <!-- Banner List -->
+    @if (Model != null && Model.Any())
+    {
+        <div class="banner-grid">
+            @foreach (var item in Model)
+            {
+                <div class="banner-card">
+                    <div class="banner-content">
+                        <!-- Header -->
+                        <div class="banner-header">
+                            <div class="banner-title-section">
+                                <h3>@item.Title</h3>
+                                <span class="banner-badge">
+                                    <i class="ri-checkbox-circle-line"></i>
+                                    Aktif
+                                </span>
+                            </div>
                         </div>
 
+                        <!-- Info Grid -->
+                        <div class="banner-info-grid">
+                            <div class="info-item">
+                                <div class="info-label">
+                                    <i class="ri-text"></i>
+                                    Açıklama
+                                </div>
+                                <div class="info-value">@item.Description</div>
+                            </div>
+
+                            <div class="info-item">
+                                <div class="info-label">
+                                    <i class="ri-video-line"></i>
+                                    Video Açıklaması
+                                </div>
+                                <div class="info-value">@item.VideoDescription</div>
+                            </div>
+                        </div>
+
+                        <!-- Video Preview -->
+                        <div class="video-preview">
+                            <div class="video-preview-label">
+                                <i class="ri-youtube-line"></i>
+                                Video Adresi
+                            </div>
+                            <a href="@item.VideoUrl" target="_blank" class="video-link">
+                                <i class="ri-external-link-line"></i>
+                                YouTube'da Aç
+                            </a>
+                        </div>
+
+                        <!-- Actions -->
+                        <div class="banner-actions">
+                            <a href="/Admin/AdminBanner/UpdateBanner/@item.BannerId" class="action-btn btn-edit">
+                                <i class="ri-edit-line"></i>
+                                Düzenle
+                            </a>
+                            <a href="@item.VideoUrl" target="_blank" class="action-btn btn-youtube">
+                                <i class="ri-youtube-line"></i>
+                                YouTube
+                            </a>
+                            <a href="/Admin/AdminBanner/RemoveBanner/@item.BannerId" class="action-btn btn-delete" onclick="return confirm('Bu banner\'ı silmek istediğinize emin misiniz?')">
+                                <i class="ri-delete-bin-line"></i>
+                                Sil
+                            </a>
+                        </div>
                     </div>
-                    <!-- end card-body-->
                 </div>
-                <!-- end card -->
-
-            </div>
-            <!-- end col -->
-
+            }
         </div>
-        <!-- end page title -->
+    }
+    else
+    {
+        <div class="empty-state">
+            <i class="ri-image-line empty-icon"></i>
+            <h3 class="empty-title">Banner Bulunamadı</h3>
+            <p class="empty-text">Başlamak için ilk ana sayfa banner'ınızı oluşturun</p>
+            <a href="/Admin/AdminBanner/CreateBanner" class="btn-add-banner">
+                <i class="ri-add-line"></i>
+                Yeni Banner Oluştur
+            </a>
+        </div>
+    }
 
-    </div> <!-- container-fluid -->
+    <!-- Add New Banner Section -->
+    @if (Model != null && Model.Any())
+    {
+        <div class="add-banner-section">
+            <a href="/Admin/AdminBanner/CreateBanner" class="btn-add-banner">
+                <i class="ri-add-line"></i>
+                Yeni Banner Ekle
+            </a>
+        </div>
+    }
 </div>
 

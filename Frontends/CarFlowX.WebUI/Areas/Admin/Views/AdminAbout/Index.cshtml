@@ -1,4 +1,4 @@
-﻿@model List<ResultAboutDto>
+@model List<ResultAboutDto>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/AdminLayout/Index.cshtml";
@@ -8,12 +8,14 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-xl-12">
-                <div class="card">
+                <div class="card admin-table-card">
                     <div class="card-body">
-                        <h4 class="card-title">Ana Sayfa Hakkımızda Alanı</h4>
-                        <p class="card-subtitle mb-4">
-                            Ana sayfanın ve Hakkımızda sayfasının "hakkım" alanında bulunan bilgileri aşağıdan düzenleyebilirsiniz. Tema bütünlüğünün bozulmaması adına lütfen sadece 1 tane veri girişi yapınız. Aksi durumlarda tema bütünlüğün bozulacaktır.
-                        </p>
+                        <div class="admin-page-header">
+                            <h4 class="card-title admin-page-title">Ana Sayfa Hakkımızda Alanı</h4>
+                            <p class="card-subtitle admin-page-desc mb-0">
+                                Ana sayfanın ve Hakkımızda sayfasının "hakkımızda" alanında bulunan bilgileri aşağıdan düzenleyebilirsiniz. Tema bütünlüğünün bozulmaması adına lütfen sadece 1 tane veri girişi yapınız.
+                            </p>
+                        </div>
                         <div class="table-responsive">
                             <table class="table mb-0">
                                 <thead>
@@ -38,9 +40,14 @@
                                     }
                                 </tbody>
                             </table>
-                            <a href="/Admin/AdminAbout/CreateAbout" class="btn btn-outline-primary">Yeni Hakkımda Alanı Girişi</a>
                         </div>
                     </div>
+                </div>
+                <div class="admin-add-section">
+                    <a href="/Admin/AdminAbout/CreateAbout" class="btn-admin-add">
+                        <i class="ri-add-line"></i>
+                        Yeni Hakkımızda Alanı Ekle
+                    </a>
                 </div>
             </div>
         </div>

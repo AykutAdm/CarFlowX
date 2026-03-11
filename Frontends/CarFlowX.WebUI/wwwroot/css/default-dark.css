@@ -1,0 +1,399 @@
+/* CarFlowX Default Sayfası - Dark Tema */
+
+/* Body & Ana Arka Plan */
+body.default-dark-theme {
+    background: #0f172a !important;
+}
+
+/* Hero/Cover - overlay koyulaştır */
+.default-dark-theme .hero-wrap .overlay {
+    background: rgba(15, 23, 42, 0.7) !important;
+}
+
+/* Hero video açıklama metni - okunabilirlik */
+.default-dark-theme .hero-wrap .heading-title span {
+    color: #fff !important;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+    font-weight: 500;
+}
+
+.default-dark-theme .hero-wrap .icon-wrap {
+    color: #fff !important;
+}
+
+/* Kiralama Formu Bölümü - bg-light yerine dark */
+.default-dark-theme .ftco-section.bg-light {
+    background: #0f172a !important;
+}
+
+.default-dark-theme .featured-top {
+    background: transparent !important;
+}
+
+/* Form - dark card */
+.default-dark-theme .request-form.bg-primary {
+    background: #1e293b !important;
+    border: 1px solid #334155 !important;
+}
+
+.default-dark-theme .request-form h2 {
+    color: #e2e8f0 !important;
+}
+
+.default-dark-theme .request-form .label {
+    color: #94a3b8 !important;
+}
+
+.default-dark-theme .request-form .form-control {
+    background: #0f172a !important;
+    border-color: #334155 !important;
+    color: #e2e8f0 !important;
+}
+
+.default-dark-theme .request-form .form-control::placeholder {
+    color: #64748b !important;
+}
+
+.default-dark-theme #drop,
+.default-dark-theme #drop option {
+    color: #e2e8f0 !important;
+    background: #0f172a !important;
+}
+
+.default-dark-theme .request-form .btn-secondary {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6) !important;
+    border: none !important;
+}
+
+/* Services Wrap - Araç Kiralamanın En Basit Yolu */
+.default-dark-theme .services-wrap {
+    background: #1e293b !important;
+    color: #e2e8f0 !important;
+    border: 1px solid #334155;
+}
+
+.default-dark-theme .services-wrap .heading-section {
+    color: #e2e8f0 !important;
+}
+
+.default-dark-theme .services-wrap .heading,
+.default-dark-theme .services-wrap .services .text h3 {
+    color: #e2e8f0 !important;
+}
+
+.default-dark-theme .services-wrap .services .text p,
+.default-dark-theme .services-wrap .text {
+    color: #cbd5e1 !important;
+}
+
+.default-dark-theme .services-wrap .icon span {
+    color: #01d28e !important;
+}
+
+/* Öne Çıkan Araçlar - car-wrap kartları */
+.default-dark-theme .car-wrap {
+    background: #1e293b !important;
+    border: 1px solid #334155 !important;
+}
+
+.default-dark-theme .car-wrap .text h2 a,
+.default-dark-theme .car-wrap .text .cat,
+.default-dark-theme .car-wrap .text .price {
+    color: #e2e8f0 !important;
+}
+
+.default-dark-theme .car-wrap .text .price span {
+    color: #94a3b8 !important;
+}
+
+/* Hakkımızda - ftco-about zaten koyu, sadece buton */
+.default-dark-theme .ftco-about .btn-primary {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6) !important;
+    border: none !important;
+}
+
+/* Hizmetler Bölümü */
+.default-dark-theme .ftco-section .heading-section .subheading {
+    color: #01d28e !important;
+}
+
+.default-dark-theme .ftco-section .heading-section h2 {
+    color: #e2e8f0 !important;
+}
+
+.default-dark-theme .services-2 {
+    background: #1e293b !important;
+    border: 1px solid #334155 !important;
+    border-radius: 16px;
+}
+
+.default-dark-theme .services-2 .heading {
+    color: #e2e8f0 !important;
+}
+
+.default-dark-theme .services-2 p {
+    color: #94a3b8 !important;
+}
+
+.default-dark-theme .services-2 .icon span {
+    color: #6366f1 !important;
+}
+
+/* BecomeADriver - overlay koyulaştır */
+.default-dark-theme .ftco-intro .overlay {
+    background: rgba(15, 23, 42, 0.75) !important;
+}
+
+/* Referanslar / Testimonial */
+.default-dark-theme .testimony-section.bg-light {
+    background: #0f172a !important;
+}
+
+.default-dark-theme .testimony-section .heading-section .subheading {
+    color: #01d28e !important;
+}
+
+.default-dark-theme .testimony-section .heading-section h2 {
+    color: #e2e8f0 !important;
+}
+
+.default-dark-theme .testimony-wrap {
+    background: #1e293b !important;
+    border: 1px solid #334155 !important;
+}
+
+.default-dark-theme .testimony-wrap .text p {
+    color: #cbd5e1 !important;
+}
+
+.default-dark-theme .testimony-wrap .name {
+    color: #e2e8f0 !important;
+}
+
+.default-dark-theme .testimony-wrap .position {
+    color: #94a3b8 !important;
+}
+
+/* İstatistikler / Counter */
+.default-dark-theme .ftco-counter.bg-light {
+    background: #1e293b !important;
+}
+
+.default-dark-theme .ftco-counter .overlay {
+    background: rgba(15, 23, 42, 0.6) !important;
+}
+
+.default-dark-theme .ftco-counter .block-18 .number {
+    color: #01d28e !important;
+}
+
+.default-dark-theme .ftco-counter .block-18 span {
+    color: #94a3b8 !important;
+}
+
+.default-dark-theme .ftco-counter .text-border {
+    border-color: #334155 !important;
+}
+
+/* Blog Bölümü */
+.default-dark-theme .blog-entry .text .heading a {
+    color: #e2e8f0 !important;
+}
+
+.default-dark-theme .blog-entry .text p,
+.default-dark-theme .blog-entry .meta a {
+    color: #94a3b8 !important;
+}
+
+/* Footer - zaten dark, biraz iyileştirme */
+.default-dark-theme .ftco-footer {
+    background: #0f172a !important;
+}
+
+.default-dark-theme .ftco-footer .ftco-heading-2,
+.default-dark-theme .ftco-footer .logo {
+    color: #e2e8f0 !important;
+}
+
+.default-dark-theme .ftco-footer .logo span {
+    color: #01d28e !important;
+}
+
+.default-dark-theme .ftco-footer p,
+.default-dark-theme .ftco-footer .list-unstyled a {
+    color: #94a3b8 !important;
+}
+
+.default-dark-theme .ftco-footer .list-unstyled a:hover {
+    color: #01d28e !important;
+}
+
+.default-dark-theme .ftco-footer .block-23 .text {
+    color: #94a3b8 !important;
+}
+
+/* Navbar - dark tema (zaten transparent, overlay ile çalışıyor) */
+.default-dark-theme .ftco-navbar-light {
+    background: rgba(15, 23, 42, 0.95) !important;
+}
+
+.default-dark-theme .ftco-navbar-light.scrolled {
+    background: #0f172a !important;
+}
+
+/* Öne Çıkan Araçlar - heading */
+.default-dark-theme .featured-top .heading-section .subheading {
+    color: #01d28e !important;
+}
+
+.default-dark-theme .featured-top .heading-section h2 {
+    color: #e2e8f0 !important;
+}
+
+/* Buton hover iyileştirmeleri */
+.default-dark-theme .btn-primary:hover {
+    background: linear-gradient(135deg, #4f46e5, #7c3aed) !important;
+    border: none !important;
+}
+
+/* ===== UILayout Sayfaları (Hakkımızda, İletişim, Arabalar, vb.) ===== */
+
+/* Hero/Main Cover - alt sayfa başlığı */
+.default-dark-theme .hero-wrap-2 .overlay {
+    background: rgba(15, 23, 42, 0.7) !important;
+}
+
+.default-dark-theme .hero-wrap-2 .breadcrumbs,
+.default-dark-theme .hero-wrap-2 .breadcrumbs a {
+    color: #cbd5e1 !important;
+}
+
+.default-dark-theme .hero-wrap-2 .bread {
+    color: #fff !important;
+}
+
+/* İletişim sayfası arka plan */
+.default-dark-theme .contact-section {
+    background: #0f172a !important;
+}
+
+/* İletişim Formu */
+.default-dark-theme .contact-form.bg-light {
+    background: #1e293b !important;
+    border: 1px solid #334155;
+}
+
+.default-dark-theme .contact-form .form-control {
+    background: #0f172a !important;
+    border-color: #334155 !important;
+    color: #e2e8f0 !important;
+}
+
+.default-dark-theme .contact-form .form-control::placeholder {
+    color: #64748b !important;
+}
+
+/* İletişim - contact info, footer address */
+.default-dark-theme .contact-info .icon,
+.default-dark-theme .block-23 .icon {
+    color: #01d28e !important;
+}
+
+.default-dark-theme .contact-info .text,
+.default-dark-theme .block-23 .text {
+    color: #cbd5e1 !important;
+}
+
+.default-dark-theme .contact-info h3 {
+    color: #e2e8f0 !important;
+}
+
+/* Arabalar sayfası - cars-section dark override */
+.default-dark-theme .cars-section {
+    background: #0f172a !important;
+}
+
+.default-dark-theme .section-title {
+    color: #e2e8f0 !important;
+}
+
+.default-dark-theme .section-subtitle {
+    color: #94a3b8 !important;
+}
+
+.default-dark-theme .car-card {
+    background: #1e293b !important;
+    border: 1px solid #334155;
+}
+
+.default-dark-theme .car-card .car-title,
+.default-dark-theme .car-card .car-brand {
+    color: #e2e8f0 !important;
+}
+
+.default-dark-theme .car-card .car-price,
+.default-dark-theme .car-card .car-feature {
+    color: #94a3b8 !important;
+}
+
+/* Breadcrumb sayfa içerikleri */
+.default-dark-theme .ftco-section .heading-section .subheading {
+    color: #01d28e !important;
+}
+
+.default-dark-theme .ftco-section .heading-section h2 {
+    color: #e2e8f0 !important;
+}
+
+.default-dark-theme .ftco-section p {
+    color: #94a3b8 !important;
+}
+
+/* Map alanı */
+.default-dark-theme #map.bg-white {
+    background: #1e293b !important;
+}
+
+/* Fiyatlar tablosu (CarPricing) */
+.default-dark-theme .ftco-cart {
+    background: #0f172a !important;
+}
+
+.default-dark-theme .car-list .table {
+    color: #e2e8f0;
+}
+
+.default-dark-theme .car-list .product-name h3 {
+    color: #e2e8f0 !important;
+}
+
+.default-dark-theme .car-list .product-name p {
+    color: #94a3b8 !important;
+}
+
+.default-dark-theme .car-list .price .num {
+    color: #01d28e !important;
+}
+
+.default-dark-theme .car-list .price .per {
+    color: #94a3b8 !important;
+}
+
+.default-dark-theme .car-list .btn-custom a {
+    color: #6366f1 !important;
+}
+
+/* İletişim - adres kutuları */
+.default-dark-theme .border.p-4 {
+    background: #1e293b !important;
+    border-color: #334155 !important;
+}
+
+.default-dark-theme .border.p-4 p,
+.default-dark-theme .border.p-4 a {
+    color: #cbd5e1 !important;
+}
+
+.default-dark-theme .border.p-4 span {
+    color: #94a3b8 !important;
+}

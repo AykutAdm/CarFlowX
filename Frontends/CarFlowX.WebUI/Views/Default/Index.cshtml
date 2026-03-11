@@ -1,22 +1,16 @@
-﻿@model ResultLocationDto
+@model ResultLocationDto
 @{
     ViewData["Title"] = "Index";
     Layout = null;
 }
 
 
-<style>
-    #drop option {
-        color: black;
-    }
-</style>
-
 <!DOCTYPE html>
 <html lang="en">
 
-@await Component.InvokeAsync("_UILayoutHeadComponentPartial")
+@await Component.InvokeAsync("_UILayoutHeadComponentPartial", new { isDarkTheme = true })
 
-<body>
+<body class="default-dark-theme">
 
     @await Component.InvokeAsync("_UILayoutNavbarComponentPartial")
 
