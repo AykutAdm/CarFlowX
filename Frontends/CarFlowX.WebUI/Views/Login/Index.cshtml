@@ -1,0 +1,732 @@
+﻿@model CreateLoginDto
+@{
+    Layout = null;
+}
+
+
+
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="utf-8" />
+    <title>CarFlowX — Giriş Yap</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg: #07080f;
+            --surface: #0e0f1a;
+            --border: rgba(255,255,255,0.06);
+            --accent: #5b7fff;
+            --accent-glow: rgba(91,127,255,0.25);
+            --accent2: #ff4f8b;
+            --text: #eeeef5;
+            --muted: #6b6b85;
+            --input-bg: rgba(255,255,255,0.03);
+            --input-border: rgba(255,255,255,0.09);
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'DM Sans', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* ── Background ── */
+        .bg-noise {
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+            background-size: 200px;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .bg-orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(100px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .bg-orb-1 {
+            width: 560px;
+            height: 560px;
+            top: -140px;
+            left: -100px;
+            background: radial-gradient(circle, rgba(91,127,255,0.12) 0%, transparent 70%);
+        }
+
+        .bg-orb-2 {
+            width: 480px;
+            height: 480px;
+            bottom: -120px;
+            right: -80px;
+            background: radial-gradient(circle, rgba(255,79,139,0.09) 0%, transparent 70%);
+        }
+
+        .bg-lines {
+            position: fixed;
+            inset: 0;
+            background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 80px 80px;
+            z-index: 0;
+        }
+
+        /* ── Layout ── */
+        .wrapper {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 960px;
+            padding: 24px;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            min-height: 100vh;
+            align-items: center;
+            gap: 0;
+        }
+
+        /* ── Left Visual Panel ── */
+        .visual-panel {
+            padding: 60px 56px 60px 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 48px;
+            animation: slideLeft 0.9s cubic-bezier(0.22,1,0.36,1) both;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .brand-mark {
+            position: relative;
+            width: 38px;
+            height: 38px;
+        }
+
+            .brand-mark::before {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background: var(--accent);
+                border-radius: 8px;
+                transform: rotate(8deg);
+                opacity: 0.3;
+            }
+
+            .brand-mark::after {
+                content: '';
+                position: absolute;
+                inset: 3px;
+                background: var(--accent);
+                border-radius: 6px;
+            }
+
+        .brand-icon-svg {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+        }
+
+            .brand-icon-svg svg {
+                width: 20px;
+                height: 20px;
+                fill: #fff;
+            }
+
+        .brand-name {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: 20px;
+            letter-spacing: -0.3px;
+        }
+
+            .brand-name .x {
+                color: var(--accent);
+            }
+
+        .hero-block {
+        }
+
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            background: rgba(91,127,255,0.1);
+            border: 1px solid rgba(91,127,255,0.2);
+            border-radius: 20px;
+            padding: 5px 12px;
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+            .hero-eyebrow span {
+                width: 6px;
+                height: 6px;
+                background: var(--accent);
+                border-radius: 50%;
+                display: inline-block;
+                animation: pulse 2s infinite;
+            }
+
+        .hero-title {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(36px, 4.5vw, 52px);
+            font-weight: 800;
+            line-height: 1.07;
+            letter-spacing: -2px;
+            margin-bottom: 18px;
+        }
+
+            .hero-title em {
+                font-style: normal;
+                background: linear-gradient(135deg, var(--accent), var(--accent2));
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+            }
+
+        .hero-desc {
+            font-size: 15px;
+            color: var(--muted);
+            line-height: 1.65;
+            max-width: 310px;
+        }
+
+        /* Feature pills */
+        .feature-pills {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .pill {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 18px;
+            background: rgba(255,255,255,0.025);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            font-size: 13px;
+            color: var(--muted);
+            transition: border-color 0.2s, background 0.2s;
+        }
+
+            .pill:hover {
+                border-color: rgba(91,127,255,0.25);
+                background: rgba(91,127,255,0.04);
+                color: var(--text);
+            }
+
+        .pill-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+            .pill-icon svg {
+                width: 16px;
+                height: 16px;
+            }
+
+            .pill-icon.blue {
+                background: rgba(91,127,255,0.15);
+            }
+
+                .pill-icon.blue svg {
+                    stroke: var(--accent);
+                }
+
+            .pill-icon.pink {
+                background: rgba(255,79,139,0.12);
+            }
+
+                .pill-icon.pink svg {
+                    stroke: var(--accent2);
+                }
+
+            .pill-icon.green {
+                background: rgba(52,211,153,0.12);
+            }
+
+                .pill-icon.green svg {
+                    stroke: #34d399;
+                }
+
+        /* ── Right Form Panel ── */
+        .form-panel {
+            padding: 48px 0 48px 52px;
+            border-left: 1px solid var(--border);
+            animation: slideRight 0.9s cubic-bezier(0.22,1,0.36,1) 0.1s both;
+        }
+
+        .form-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 40px 36px;
+            backdrop-filter: blur(20px);
+        }
+
+        .welcome-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            color: var(--muted);
+            margin-bottom: 20px;
+        }
+
+            .welcome-badge::before {
+                content: '👋';
+                font-size: 14px;
+            }
+
+        .form-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 26px;
+            font-weight: 800;
+            letter-spacing: -0.8px;
+            margin-bottom: 6px;
+        }
+
+        .form-subtitle {
+            font-size: 14px;
+            color: var(--muted);
+            margin-bottom: 32px;
+        }
+
+        /* Inputs */
+        .field {
+            margin-bottom: 14px;
+        }
+
+            .field label {
+                display: block;
+                font-size: 11px;
+                font-weight: 500;
+                color: var(--muted);
+                letter-spacing: 0.9px;
+                text-transform: uppercase;
+                margin-bottom: 8px;
+            }
+
+        .input-box {
+            position: relative;
+        }
+
+            .input-box svg {
+                position: absolute;
+                left: 14px;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 15px;
+                height: 15px;
+                stroke: var(--muted);
+                transition: stroke 0.2s;
+                pointer-events: none;
+                flex-shrink: 0;
+            }
+
+            .input-box input {
+                width: 100%;
+                background: var(--input-bg);
+                border: 1px solid var(--input-border);
+                border-radius: 11px;
+                padding: 13px 14px 13px 40px;
+                color: var(--text);
+                font-family: 'DM Sans', sans-serif;
+                font-size: 14px;
+                outline: none;
+                transition: border-color 0.25s, background 0.25s, box-shadow 0.25s;
+            }
+
+                .input-box input::placeholder {
+                    color: rgba(255,255,255,0.18);
+                }
+
+                .input-box input:focus {
+                    border-color: rgba(91,127,255,0.55);
+                    background: rgba(91,127,255,0.04);
+                    box-shadow: 0 0 0 3px rgba(91,127,255,0.1);
+                }
+
+                    .input-box input:focus ~ svg,
+                    .input-box:focus-within svg {
+                        stroke: var(--accent);
+                    }
+
+        /* Forgot password row */
+        .field-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+            .field-row label {
+                margin-bottom: 0;
+            }
+
+        .forgot-link {
+            font-size: 12px;
+            color: var(--accent);
+            text-decoration: none;
+            opacity: 0.85;
+            transition: opacity 0.2s;
+        }
+
+            .forgot-link:hover {
+                opacity: 1;
+            }
+
+        /* Submit button */
+        .btn-login {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, var(--accent), #7b5fff);
+            color: #fff;
+            border: none;
+            border-radius: 11px;
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 0.3px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: transform 0.15s, box-shadow 0.2s, opacity 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .btn-login::after {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background: rgba(255,255,255,0.12);
+                opacity: 0;
+                transition: opacity 0.2s;
+            }
+
+            .btn-login:hover {
+                transform: translateY(-1px);
+                box-shadow: 0 10px 35px rgba(91,127,255,0.35);
+            }
+
+                .btn-login:hover::after {
+                    opacity: 1;
+                }
+
+            .btn-login:active {
+                transform: translateY(0);
+            }
+
+        /* Divider */
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+            .divider::before, .divider::after {
+                content: '';
+                flex: 1;
+                height: 1px;
+                background: var(--border);
+            }
+
+            .divider span {
+                font-size: 11px;
+                color: var(--muted);
+                letter-spacing: 1px;
+            }
+
+        /* Social */
+        .social-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 24px;
+        }
+
+        .btn-social {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 11px;
+            background: var(--input-bg);
+            border: 1px solid var(--input-border);
+            border-radius: 10px;
+            color: rgba(255,255,255,0.6);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.2s, border-color 0.2s, color 0.2s;
+        }
+
+            .btn-social:hover {
+                background: rgba(255,255,255,0.06);
+                border-color: rgba(255,255,255,0.18);
+                color: var(--text);
+            }
+
+            .btn-social svg {
+                width: 15px;
+                height: 15px;
+            }
+
+        /* Register link */
+        .register-link {
+            text-align: center;
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+            .register-link a {
+                color: var(--accent);
+                font-weight: 600;
+                text-decoration: none;
+                transition: opacity 0.2s;
+            }
+
+                .register-link a:hover {
+                    opacity: 0.8;
+                }
+
+        /* Animations */
+        @@keyframes slideLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-28px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @@keyframes slideRight {
+            from {
+                opacity: 0;
+                transform: translateX(28px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @@keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.3;
+            }
+        }
+
+        /* Responsive */
+        @@media (max-width: 780px) {
+            .wrapper {
+                grid-template-columns: 1fr;
+                min-height: auto;
+                align-items: flex-start;
+                padding: 32px 20px;
+            }
+
+            .visual-panel {
+                padding: 20px 0 28px;
+                border-bottom: 1px solid var(--border);
+                gap: 28px;
+            }
+
+            .feature-pills {
+                display: none;
+            }
+
+            .form-panel {
+                padding: 28px 0 40px;
+                border-left: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-noise"></div>
+    <div class="bg-lines"></div>
+    <div class="bg-orb bg-orb-1"></div>
+    <div class="bg-orb bg-orb-2"></div>
+
+    <div class="wrapper">
+
+        <!-- ── LEFT PANEL ── -->
+        <div class="visual-panel">
+
+            <div class="brand">
+                <div class="brand-mark">
+                    <div class="brand-icon-svg">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="brand-name">CarFlow<span class="x">X</span></div>
+            </div>
+
+            <div class="hero-block">
+                <div class="hero-eyebrow">
+                    <span></span> Platforma Hoş Geldin
+                </div>
+                <h1 class="hero-title">
+                    Sürüşün<br>
+                    <em>akıllı</em> eşliği.
+                </h1>
+                <p class="hero-desc">
+                    CarFlowX ile binlerce araç seçeneğine ulaş, güvenli rezervasyon yap ve yolculuğunu özgürce planla.
+                </p>
+            </div>
+
+            <div class="feature-pills">
+                <div class="pill">
+                    <div class="pill-icon blue">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                        </svg>
+                    </div>
+                    SSL şifreli güvenli giriş
+                </div>
+                <div class="pill">
+                    <div class="pill-icon pink">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10" />
+                            <polyline points="12 6 12 12 16 14" />
+                        </svg>
+                    </div>
+                    7/24 destek & anlık bildirimler
+                </div>
+                <div class="pill">
+                    <div class="pill-icon green">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+                        </svg>
+                    </div>
+                    12.000+ aktif araç ilanı
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ── RIGHT PANEL ── -->
+        <div class="form-panel">
+            <div class="form-card">
+
+                <div class="welcome-badge">Tekrar hoş geldin</div>
+                <h2 class="form-title">Giriş Yap</h2>
+                <p class="form-subtitle">Hesabına erişmek için bilgilerini gir.</p>
+
+                <form method="post">
+                    <div class="field">
+                        <label>Kullanıcı Adı</label>
+                        <div class="input-box">
+                            <input type="text" placeholder="kullanici_adi" asp-for="Username">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                                <circle cx="12" cy="7" r="4" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <div class="field-row">
+                            <label>Şifre</label>
+                            <a href="pages-recoverpw.html" class="forgot-link">Şifremi Unuttum</a>
+                        </div>
+                        <div class="input-box">
+                            <input type="password" placeholder="••••••••" asp-for="Password">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-login">Giriş Yap →</button>
+                </form>
+
+                <div class="divider"><span>YA DA</span></div>
+
+                <div class="social-grid">
+                    <a href="javascript:void(0);" class="btn-social">
+                        <svg viewBox="0 0 24 24" fill="#4285F4">
+                            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+                            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853" />
+                            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05" />
+                            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335" />
+                        </svg>
+                        Google
+                    </a>
+                    <a href="javascript:void(0);" class="btn-social">
+                        <svg viewBox="0 0 24 24" fill="#1877F2">
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                        </svg>
+                        Facebook
+                    </a>
+                </div>
+
+                <div class="register-link">
+                    Hesabın yok mu? <a href="/Register/CreateAppUser/">Ücretsiz Kayıt Ol</a>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
+

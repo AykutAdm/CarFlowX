@@ -15,7 +15,8 @@ namespace CarFlowX.Persistence.Context
             optionsBuilder.UseSqlServer("Server=DESKTOP-D0QM5NB\\SQLEXPRESS;initial Catalog=CarFlowXDb;integrated Security=true;TrustServerCertificate=True;");
         }
 
-
+        public DbSet<AppUser> AppUsers { get; set; }
+        public DbSet<AppRole> AppRoles { get; set; }
         public DbSet<About> Abouts { get; set; }
         public DbSet<Banner> Banners { get; set; }
         public DbSet<Brand> Brands { get; set; }
@@ -38,6 +39,7 @@ namespace CarFlowX.Persistence.Context
         public DbSet<Comment> Comments { get; set; }
         public DbSet<RentACar> RentACars { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
+        public DbSet<Review> Reviews { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

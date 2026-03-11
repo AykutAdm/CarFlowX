@@ -8,27 +8,51 @@ using CarFlowX.Application.Features.Mediator.Handlers.TestimonialHandlers;
 using CarFlowX.Application.Features.RepositoryPattern;
 using CarFlowX.Application.Interfaces;
 using CarFlowX.Application.Interfaces.BlogInterfaces;
+using CarFlowX.Application.Interfaces.CarDescriptionInterfaces;
 using CarFlowX.Application.Interfaces.CarFeatureInterfaces;
 using CarFlowX.Application.Interfaces.CarInterfaces;
 using CarFlowX.Application.Interfaces.CarPricingInterfaces;
 using CarFlowX.Application.Interfaces.RentACarInterfaces;
+using CarFlowX.Application.Interfaces.ReviewInterfaces;
 using CarFlowX.Application.Interfaces.StatisticsInterfaces;
 using CarFlowX.Application.Interfaces.TagCloudInterfaces;
 using CarFlowX.Application.Services;
+using CarFlowX.Application.Tools;
 using CarFlowX.Persistence.Context;
 using CarFlowX.Persistence.Repositories;
 using CarFlowX.Persistence.Repositories.BlogRepositories;
+using CarFlowX.Persistence.Repositories.CarDescriptionRepositories;
 using CarFlowX.Persistence.Repositories.CarFeatureRepositories;
 using CarFlowX.Persistence.Repositories.CarPricingRepositories;
 using CarFlowX.Persistence.Repositories.CarRepositories;
 using CarFlowX.Persistence.Repositories.CommentRepositories;
 using CarFlowX.Persistence.Repositories.RentACarRepositories;
+using CarFlowX.Persistence.Repositories.ReviewRepositories;
 using CarFlowX.Persistence.Repositories.StatisticsRepositories;
 using CarFlowX.Persistence.Repositories.TagCloudRepositories;
+using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Reflection;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>
+{
+    opt.RequireHttpsMetadata = false;
+    opt.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidAudience = JwtTokenDefaults.ValidAudience,
+        ValidIssuer = JwtTokenDefaults.ValidIssuer,
+        ClockSkew = TimeSpan.Zero,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(JwtTokenDefaults.Key)),
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true
+    };
+});
 
 builder.Services.AddScoped<CarFlowXContext>();
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
@@ -40,6 +64,8 @@ builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(CommentRepositor
 builder.Services.AddScoped(typeof(IStatisticsRepository), typeof(StatisticsRepository));
 builder.Services.AddScoped(typeof(IRentACarRepository), typeof(RentACarRepository));
 builder.Services.AddScoped(typeof(ICarFeatureRepository), typeof(CarFeatureRepository));
+builder.Services.AddScoped(typeof(ICarDescriptionRepository), typeof(CarDescriptionRepository));
+builder.Services.AddScoped(typeof(IReviewRepository), typeof(ReviewRepository));
 
 builder.Services.AddScoped<GetAboutQueryHandler>();
 builder.Services.AddScoped<GetAboutByIdQueryHandler>();
@@ -87,9 +113,13 @@ builder.Services.AddScoped<UpdateTestimonialCommandHandler>();
 builder.Services.AddScoped<RemoveTestimonialCommandHandler>();
 
 
+builder.Services.AddControllers().AddFluentValidation(x =>
+{
+    x.RegisterValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+});
+
 builder.Services.AddApplicationService(builder.Configuration);
 
-builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -104,6 +134,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

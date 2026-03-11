@@ -47,6 +47,61 @@ namespace CarFlowX.Persistence.Migrations
                     b.ToTable("Abouts");
                 });
 
+            modelBuilder.Entity("CarFlowX.Domain.Entities.AppRole", b =>
+                {
+                    b.Property<int>("AppRoleId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AppRoleId"));
+
+                    b.Property<string>("AppRoleName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("AppRoleId");
+
+                    b.ToTable("AppRoles");
+                });
+
+            modelBuilder.Entity("CarFlowX.Domain.Entities.AppUser", b =>
+                {
+                    b.Property<int>("AppUserId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AppUserId"));
+
+                    b.Property<int>("AppRoleId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Surname")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("AppUserId");
+
+                    b.HasIndex("AppRoleId");
+
+                    b.ToTable("AppUsers");
+                });
+
             modelBuilder.Entity("CarFlowX.Domain.Entities.Author", b =>
                 {
                     b.Property<int>("AuthorId")
@@ -599,6 +654,42 @@ namespace CarFlowX.Persistence.Migrations
                     b.ToTable("Reservations");
                 });
 
+            modelBuilder.Entity("CarFlowX.Domain.Entities.Review", b =>
+                {
+                    b.Property<int>("ReviewId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ReviewId"));
+
+                    b.Property<int>("CarId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Comment")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CustomerImage")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CustomerName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("RatingValue")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("ReviewDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("ReviewId");
+
+                    b.HasIndex("CarId");
+
+                    b.ToTable("Reviews");
+                });
+
             modelBuilder.Entity("CarFlowX.Domain.Entities.Service", b =>
                 {
                     b.Property<int>("ServiceId")
@@ -698,6 +789,17 @@ namespace CarFlowX.Persistence.Migrations
                     b.HasKey("TestimonialId");
 
                     b.ToTable("Testimonials");
+                });
+
+            modelBuilder.Entity("CarFlowX.Domain.Entities.AppUser", b =>
+                {
+                    b.HasOne("CarFlowX.Domain.Entities.AppRole", "AppRole")
+                        .WithMany("AppUsers")
+                        .HasForeignKey("AppRoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppRole");
                 });
 
             modelBuilder.Entity("CarFlowX.Domain.Entities.Blog", b =>
@@ -851,6 +953,17 @@ namespace CarFlowX.Persistence.Migrations
                     b.Navigation("PickUpLocation");
                 });
 
+            modelBuilder.Entity("CarFlowX.Domain.Entities.Review", b =>
+                {
+                    b.HasOne("CarFlowX.Domain.Entities.Car", "Car")
+                        .WithMany("Reviews")
+                        .HasForeignKey("CarId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Car");
+                });
+
             modelBuilder.Entity("CarFlowX.Domain.Entities.TagCloud", b =>
                 {
                     b.HasOne("CarFlowX.Domain.Entities.Blog", "Blog")
@@ -860,6 +973,11 @@ namespace CarFlowX.Persistence.Migrations
                         .IsRequired();
 
                     b.Navigation("Blog");
+                });
+
+            modelBuilder.Entity("CarFlowX.Domain.Entities.AppRole", b =>
+                {
+                    b.Navigation("AppUsers");
                 });
 
             modelBuilder.Entity("CarFlowX.Domain.Entities.Author", b =>
@@ -892,6 +1010,8 @@ namespace CarFlowX.Persistence.Migrations
                     b.Navigation("RentACars");
 
                     b.Navigation("Reservations");
+
+                    b.Navigation("Reviews");
                 });
 
             modelBuilder.Entity("CarFlowX.Domain.Entities.Category", b =>
