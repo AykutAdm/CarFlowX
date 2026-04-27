@@ -1,10 +1,5 @@
 ## 🚗 CarFlowX
 
-> 🎓 Bu proje, **Murat Yücedağ** hocamızın hazırladığı  
-> **"Asp.Net Core Api 8.0 Onion Architecture ile BookCar Projesi"** eğitim serisi kapsamında geliştirilmiştir.
-
-[📺 Eğitim serisine buradan ulaşabilirsiniz](https://www.udemy.com/course/aspnet-core-api-8-onion-architecture-ile-bookcar-projesi/)
-
 ---
 
 ## 📋 Proje Hakkında
